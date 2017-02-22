@@ -252,7 +252,7 @@ void tid_srvr_get_address(const TID_SRVR_BLK *blk,
 {
   struct sockaddr_in *sa = NULL;
     if (NULL == blk) {
-        return NULL;
+        return;
     }
 
     sa = talloc_zero(blk, struct sockaddr_in);
