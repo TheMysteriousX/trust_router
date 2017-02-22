@@ -266,7 +266,7 @@ void tid_srvr_get_address(const TID_SRVR_BLK *blk,
 DH *tid_srvr_get_dh( TID_SRVR_BLK *blk)
 {
   if (NULL == blk) {
-      return NULL
+      return NULL;
   }
 
   return blk->aaa_server_dh;
@@ -276,7 +276,7 @@ const TR_NAME *tid_srvr_get_key_name(
 				    const TID_SRVR_BLK *blk)
 {
   if (NULL == blk) {
-      return NULL
+      return NULL;
   }
 
   return blk->key_name;
@@ -286,7 +286,7 @@ uint32_t tid_srvr_get_key_expiration(
 				    const TID_SRVR_BLK *blk)
 {
   if (NULL == blk) {
-      return NULL
+      return NULL;
   }
 
   uint32_t expire_seconds = 0;
