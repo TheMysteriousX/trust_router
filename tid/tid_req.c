@@ -252,7 +252,7 @@ void tid_srvr_get_address(const TID_SRVR_BLK *blk,
 {
   struct sockaddr_in *sa = NULL;
     if (NULL == blk) {
-        return NULL
+        return NULL;
     }
 
     sa = talloc_zero(blk, struct sockaddr_in);
@@ -286,7 +286,7 @@ uint32_t tid_srvr_get_key_expiration(
 				    const TID_SRVR_BLK *blk)
 {
   if (NULL == blk) {
-      return NULL;
+      return 0;
   }
 
   uint32_t expire_seconds = 0;
