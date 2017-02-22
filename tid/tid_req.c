@@ -251,7 +251,10 @@ void tid_srvr_get_address(const TID_SRVR_BLK *blk,
 			  size_t *out_len)
 {
   struct sockaddr_in *sa = NULL;
-    assert(blk);
+    if (NULL == blk) {
+        return NULL
+    }
+
     sa = talloc_zero(blk, struct sockaddr_in);
     sa->sin_family = AF_INET;
     inet_aton(blk->aaa_server_addr, &(sa->sin_addr));
@@ -262,13 +265,38 @@ void tid_srvr_get_address(const TID_SRVR_BLK *blk,
 
 DH *tid_srvr_get_dh( TID_SRVR_BLK *blk)
 {
-  assert(blk);
+  if (NULL == blk) {
+      return NULL
+  }
+
   return blk->aaa_server_dh;
 }
 
 const TR_NAME *tid_srvr_get_key_name(
 				    const TID_SRVR_BLK *blk)
 {
-  assert(blk);
+  if (NULL == blk) {
+      return NULL
+  }
+
   return blk->key_name;
+}
+
+uint32_t tid_srvr_get_key_expiration(
+				    const TID_SRVR_BLK *blk)
+{
+  if (NULL == blk) {
+      return NULL
+  }
+
+  uint32_t expire_seconds = 0;
+
+  if (blk->key_expiration.tv_sec <= UINT32_MAX) {
+    expire_seconds = blk->key_expiration.tv_sec;
+  }
+  else {
+    expire_seconds = UINT32_MAX;
+  }
+
+  return expire_seconds;
 }
